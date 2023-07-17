@@ -12,23 +12,27 @@ row trabaja con align en eje y
 column trabaja con align en eje x
  */
 
-/* ////////////////////////////////////////////////////////////////////////////////////// CHAPTER 2 CONCEPTOS 
+ 
+/*////////////////////////////////////////////////////////////////////////////////////// CHAPTER 2 CONCEPTOS */
 
 .container {
   background-color: #333;
-  display: flex;  como BLOCK ocupa todo el ancho  
+  /*padding: 1rem;*/
+  display: flex;  /*como BLOCK (cajas envidiosas) ocupa todo el ancho aunque los items que contiene no abarquen todo el width de la pantalla */
+  /*display: inline-flex;*/ 
 }
 
 .item {
-  background-color: #666;
+  background-color: lightseagreen;
 }
 
 .container-2 {
   background-color: #333;
-  display: inline-flex;  ocupa solo el ancho que necesita 
+  /* Con inline-flex podemos alinear varias cajas como si estuvieran en linea */
+  display: inline-flex;  /* (como las etiquetas en linea) ocupa solo el ancho que necesita para abarcar los items que contenga */
 }
 
-*/
+
 
 /* ///////////////////////////////////////////////////////////////////////////////////// CHAPTER 3 FLUJO DE FLEXBOX  
 ordena en row o column y sus reversos para invertir los ordenes

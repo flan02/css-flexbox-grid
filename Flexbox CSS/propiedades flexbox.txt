@@ -1,7 +1,5 @@
 www.jonmircha.com/flexbox
 
-
-
 placeimg.com  / sitio web para usar imagenes de prueba en las paginas que diseñamos
 
       display: flex;
