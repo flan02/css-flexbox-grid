@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      *,
+      *::after,
+      *::before {
+        box-sizing: border-box; /* el tamano de la caja comienza dsd el borde */
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto; /* con esto la img se hace responsive al contenedor y nose deforma */
+      }
+      main {
+        flex: 1 0 auto; /* grow shrink basis */
+      }
+
+      .titulares {
+        padding: 1rem;
+        background-color: #222;
+        color: #eee;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centro la caja, para el contenido es TEXT-ALIGN  */
+      }
+
+      .menu ul {
+        list-style-type: none;
+      }
+
+      .hero-image {
+        min-height: 100vh; /* siempre darle una minima altura */
+        color: #fff;
+        background-repeat: no-repeat;
+        background-image: url("https://placeimg.com/1280/720/animals");
+      }
+
+      .hero-image div {
+        /* por modelo de cajas, se pone un div que contenga la imagen p/ darle opacidad*/
+        background-color: rgba(0, 0, 0, 0.75);
+        min-height: 100vh; /* hereda la altura del contenedor padre y pasa a ser el elem flexbox*/
+        display: flex; /* si hay un solo elem. no importa si hay direccion ROW o COLUMN */
+        justify-content: center; /* centramos la caja */
+        align-items: center;
+        text-align: center;
+      }
+
+      .hero-image h1 {
+        font-size: 7vw;
+      }
+
+      .flex-responsive {
+        display: flex;
+        flex-flow: row wrap;
+      }
+
+      .flex-responsive-item {
+        /* simula el efecto de las media queries */
+        border: thin solid #f60;
+        flex: 1 1 200px; /* 200px min valor tamano basico que va a obtener y cada aumento de 200px va a crecer el item*/
+      }
+
+      @media screen and (min-width: 1024px) {
+        .header {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        .menu ul {
+          display: flex;
+        }
+
+        .menu li {
+          padding: 0.5rem;
+        }
+
+        .flex-container {
+          display: flex;
+        }
+
+        .flex-item {
+          flex: 0 0 50%;
+        }
+
+        /* hacen lo mismo solo que ORDEN se le aplica a los hijos y ROW REVERSE al elem padre */
+        .flex-order-1 {
+          order: 1;
+        }
+
+        .flex-row-reverse {
+          flex-direction: row-reverse;
+        }
+      }
+    </style>
+    <title>cabecera responsive</title>
+  </head>
+  <body>
+    <header class="titulares header">
+      <div class="logo">Logo</div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#">Seccion 1</a></li>
+          <li><a href="#">Seccion 2</a></li>
+          <li><a href="#">Seccion 3</a></li>
+          <li><a href="#">Seccion 4</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article class="hero-image">
+        <div>
+          <h1>Flexbox is fuckin' COOL</h1>
+        </div>
+      </article>
+      <section class="flex-container">
+        <article class="flex-item">
+          <h2>Titulo</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
+            veritatis amet ab officiis, dolores neque quae, quo doloremque
+            nesciunt, ex maiores distinctio recusandae id! At inventore corporis
+            dolore libero nihil!
+          </p>
+        </article>
+        <article class="flex-item">
+          <img src="https://placeimg.com/400/400/people" alt="people" />
+        </article>
+      </section>
+      <section class="flex-container flex-row-reverse">
+        <article class="flex-item">
+          <h2>Titulo</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
+            veritatis amet ab officiis, dolores neque quae, quo doloremque
+            nesciunt, ex maiores distinctio recusandae id! At inventore corporis
+            dolore libero nihil!
+          </p>
+        </article>
+        <article class="flex-item">
+          <img src="https://placeimg.com/400/400/arch" alt="arch" />
+        </article>
+      </section>
+      <h2>Responsive sin media queries con flexbox</h2>
+      <section class="flex-responsive">
+        <article class="flex-responsive-item">item responsivo 1</article>
+        <article class="flex-responsive-item">item responsivo 2</article>
+        <article class="flex-responsive-item">item responsivo 3</article>
+        <article class="flex-responsive-item">item responsivo 4</article>
+        <article class="flex-responsive-item">item responsivo 5</article>
+        <article class="flex-responsive-item">item responsivo 6</article>
+        <article class="flex-responsive-item">item responsivo 7</article>
+        <article class="flex-responsive-item">item responsivo 8</article>
+        <article class="flex-responsive-item">item responsivo 9</article>
+        <article class="flex-responsive-item">item responsivo 10</article>
+        <article class="flex-responsive-item">item responsivo 11</article>
+        <article class="flex-responsive-item">item responsivo 12</article>
+        <article class="flex-responsive-item">item responsivo 13</article>
+        <article class="flex-responsive-item">item responsivo 14</article>
+        <article class="flex-responsive-item">item responsivo 15</article>
+        <article class="flex-responsive-item">item responsivo 16</article>
+        <article class="flex-responsive-item">item responsivo 17</article>
+        <article class="flex-responsive-item">item responsivo 18</article>
+        <article class="flex-responsive-item">item responsivo 19</article>
+      </section>
+    </main>
+    <footer class="titulares">
+      <h2>Sticky Footer</h2>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+/*  HACEMOS LOS ELEMENTOS FLEXIBLES, que empiecen con el nombre BOX */
+[class^="box"] {
+  margin: 3rem auto;
+  background-color: indianred;
+  text-align: center;
+}
+
+/* caja normal */
+.box {
+  width: 300px;
+  height: 300px;
+}
+
+/* caja flexible, usamos unidades relativas */
+.box-flexible {
+  width: 50%; /* hace referencia al contenedor padre, el article en este caso */
+  height: 20vh; /* si el width es en %, debe llevar una medida mensurable, por ej vh, rem */
+}
+
+/* vamos a ver 4 propiedades de CSS p/ controlar la flexibilidad de los elem 
+manejando los minimos y los maximos que establecemos, derivan del alto y ancho */
+.box-flexible-2 {
+  /* en vez de definir alto y ancho, determinamos el punto min a decrecer y max a crecer */
+  max-width: 960px;
+  min-width: 280px;
+  max-height: 480px; /* la altura debe depender del contenido, usamos AUTO */
+  min-height: 280px;
+}
+
+.box-flexible-3 {
+  /* esto es ignorado ya que WIDTH y HEIGHT tienen mayor jerarquia que MIN y MAX */
+  max-width: 960px;
+  min-width: 280px;
+  max-height: 480px;
+  min-height: 280px;
+  width: 300px;
+  height: 300px;
+}
+
+.box-flexible-4 {
+  max-width: 960px;
+  min-width: 280px;
+  max-height: 480px;
+  min-height: 280px;
+  width: 50%; /* medida de ancho el 50% de su contenedor, en este caso <main> */
+  height: 20vh;
+}
+
+/* //////////////////////////////////////////   MULTIMEDIA  ///////////////////////////////// */
+/* generamos responsibidad en los elementos */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto; /* evitamos q la imagen se deforme */
+}
+
+/* tecnica VIEJA p/ hacer videos responsivos manualmente usando un DIV*/
+.responsive-media {
+  position: relative;
+  max-width: 100%;
+  height: 0; /* los % no funcionan en HEIGHT si el padre no tiene una altura establecida */
+  padding-bottom: 56.25%; /* FORMATO: WIDESCREEN 16:9 -- tecnica vieja que siempre funciona, forma la altura del contenedor 
+  16 ---> 100%
+  9 ----> 56.25% */
+}
+
+.responsive-media > * {
+  /* llamamos a sus hijos directos */
+  position: absolute;
+  width: 100%;
+  height: 100%; /* la altura al padre se la otorga el padding bottom */
+}
+
+/* tecnica NUEVA p/ haces los videos responsivos */
+.aspect-ratio-16-9 {
+  aspect-ratio: 16/9; /* froma un rectangulo -- es experimental esta propiedad
+  aspect-ratio: 1/1 forma un cuadrado */
+}
+
+/* ////////////////////////////////////////  MEDIA QUERIES MODERNAS  //////////////////////////////////// */
+
+@media print {
+  @page {
+    size: A5 landscape;
+  }
+
+  body {
+    font-size: 10pt;
+    font-family: Arial;
+    background-color: hotpink;
+    color: red;
+  }
+}
+
+/*  media queries muy popular segun la configuracion del usuario en su navegador */
+@media screen and (prefers-reduced-motion: reduce) {
+  /* reduce o no-preference */
+  html {
+    scroll-behavior: auto; /* aca podemos modificar el formato con el que se mueve la barra de scroll */
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  /* dark o light o no-preference*/
+  html {
+    background-color: #111;
+    color: lavenderblush;
+  }
+}
+
+/* veamos las mediaqueries que afectan la resolucion de pantalla */
+/* MIN-WIDTH se utiliza siempre como parametro (significa 480px en adelante), si estamos usando la estrategia MOBILE FIRST */
+@media screen and (min-width: 480px) {
+  html {
+    background-color: lightpink;
+    color: grey;
+  }
+}
+
+/*MAX-WIDTH se utiliza p/ filosofia DESKTOP FIRST, significa de 1024px hacia abajo */
+@media screen and (max-width: 1024px) {
+  html {
+    background-color: lightgreen;
+    color: grey;
+  }
+}
+
+/* /////////////////////////////////////////////////// FEATURES QUERIES  //////////////////////////////////////////// */
+/* consultamos al navegador si estan habilitadas ciertas propiedades */
+/* podemos usar los operadores AND, OR, NOT */
+/* todas las compatibilidades las podemos consultar en www.caniuse.com  */
+@supports (grid-template-columns: subgrid) {
+  html {
+    background-color: black;
+    color: greenyellow;
+  }
+}
+
+@supports not (grid-template-columns: subgrid) {
+  html {
+    background-color: blue;
+    color: white;
+  }
+}
+
+@supports (display: grid) and (grid-template-columns: subgrid) {
+  html {
+    background-color: lightpink;
+    color: crimson;
+  }
+}
+
+/* //////////////////////////////////////////////  CONTEINER QUERIES ////////////////// */
+/* nos permite aplicar reglas CSS, p/ redimensionar un contenido en particular y que dependa de sus necesidades */
+/* no dependen de las condiciones de la pantalla, sino de las caracteristicas y necesidades propias de c/ elemento */
+/* en 2022 NO es soportada x navegadores */
+
+.card {
+  border: thin solid grey;
+  margin: auto; /* se centra siempre el elemento */
+  max-width: 800px; /* para q nose desborder del contenedor padre */
+  contain: layout inline-size style; /* NO FUNCIONA EN 2022, se usa p/ activar la caracteristica mediaqueries */
+}
+
+.card-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: 0 50%; /* empieza ubicado en las coord [0;50%] */
+}
+
+.car-content {
+  padding: 1rem;
+}
+
+/* NO ESTA HABILITADO EN 2022 
+@container (min-width: 600px) {
+  .card-container {
+    display: flex;  se van a alinear horizontalmente 
+  }
+
+  .card-container > * {
+    width: 50%;
+    flex-basis: 50%;  
+  }
+}
+ */
+
+/* /////////////////////////////////////////////////////////////////  GRID FLUIDA  ////////////////////////////// */
+
+.fluid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.fluid-item {
+  border: thin solid #444;
+  padding: 1rem;
+}
+
+/* ////////////////////////////////////////////////////  TEXTOS FLUIDOS (guardados en clases)  ////////////////////////// */
+
+/* @link https://utopia.fyi/type/calculator?c=320,21,1.2,1140,24,1.25,5,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l */
+
+:root {
+  --step--2: clamp(0.91rem, 0.89rem + 0.1vw, 0.96rem);
+  --step--1: clamp(1.09rem, 1.05rem + 0.21vw, 1.2rem);
+  --step-0: clamp(1.31rem, 1.24rem + 0.37vw, 1.5rem);
+  --step-1: clamp(1.58rem, 1.46rem + 0.59vw, 1.88rem);
+  --step-2: clamp(1.89rem, 1.71rem + 0.89vw, 2.34rem);
+  --step-3: clamp(2.27rem, 2.01rem + 1.29vw, 2.93rem);
+  --step-4: clamp(2.72rem, 2.36rem + 1.83vw, 3.66rem);
+  --step-5: clamp(3.27rem, 2.75rem + 2.56vw, 4.58rem);
+}
+/* los guardamos en clases p/ modificar el font-size, sirve para otros elem aparte de textos*/
+/* simula desde el h1 hasta el h6 */
+.step--2 {
+  /* p */
+  font-size: var(--step--2);
+}
+.step--1 {
+  font-size: var(--step--1);
+}
+.step-0 {
+  /* h6 */
+  font-size: var(--step-0);
+}
+.step-1 {
+  font-size: var(--step-1);
+}
+.step-2 {
+  font-size: var(--step-2);
+}
+.step-3 {
+  font-size: var(--step-3);
+}
+.step-4 {
+  /* h2 */
+  font-size: var(--step-4);
+}
+.step-5 {
+  /* h1 */
+  font-size: var(--step-5);
+}
+
+/* valores generados por UTOPIA p/ texto responsivo */
+body {
+  /* 14 = tamano letra mas pequeno
+     18 = tamano letra mas grande 
+     300 = tamano de viewport mas pequeno
+     1400 = tamano de viewport mas grande (valor hasta que crece el texto)*/
+  font-size: calc(14px + (18 - 14) * ((100vw - 300px) / (1400 - 300)));
+
+  /* por defecto */
+  /* font-size: calc(12px + (24 - 12) * ((100vw - 200px) / (1600 - 200)));  */
+}
+
+/* vamos a generar elementos HTML fluidos, ejemplo <div>
+funcion clamp(valor minimo, valor ideal, valor maximo) */
+.box-fluid {
+  width: clamp(400px, 60vw, 600px);
+  height: clamp(200px, 30vh, 300px);
+}

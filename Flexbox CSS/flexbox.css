@@ -1,0 +1,188 @@
+/* 11 o 12 propiedades a entender en flexbox
+ver las guias completas de flexbox en la pagina css-tricks.com 
+
+Usamos la extension CSS Flexbox Cheatsheet (CTRL+SHIFT+P) vemos
+las propiedades que tiene flexbox
+
+FLEXBOX ES UNIDIRECCIONAL SOLO GENERA FILAS HORIZONTALES
+NO HAY COLUMNAS, SOLAMENTE PODEMOS ACOMODAR EL EXCESO DE ITEMS
+EN FORMATO COLUMN PERO TODO DENTRO DE LA MISMA FILA
+
+row trabaja con align en eje y
+column trabaja con align en eje x
+ */
+
+/* ////////////////////////////////////////////////////////////////////////////////////// CHAPTER 2 CONCEPTOS 
+
+.container {
+  background-color: #333;
+  display: flex;  como BLOCK ocupa todo el ancho  
+}
+
+.item {
+  background-color: #666;
+}
+
+.container-2 {
+  background-color: #333;
+  display: inline-flex;  ocupa solo el ancho que necesita 
+}
+
+*/
+
+/* ///////////////////////////////////////////////////////////////////////////////////// CHAPTER 3 FLUJO DE FLEXBOX  
+ordena en row o column y sus reversos para invertir los ordenes
+
+.item {
+  background-color: #666;
+  border: thin solid pink;
+  width: 20%;
+  height: 20%;
+}
+
+.container {
+  background-color: #333;
+  display: flex;
+  flex-direction: column;  column sobre eje y 
+  flex-wrap: wrap;  envoltura del padre, como se alinean los hijos 
+  genera un scroll horizontal, mantiene todos los
+  hijos en una sola fila horizontal // WRAP respeta el % de los hijos y
+  crea columnas con los items dentro de la misma fila
+  height: 30vh;
+
+  flex-flow: column nowrap;  atajo (shortcut) flex-direction y flex-wrap 
+}
+
+*/
+
+/*  ///////////////////////////////////////////////////////////////////////////////// CHAPTER 4  JUSTIFY-CONTENT
+justify content define la alineacion aplica respecto al espacio sobrante que quede en la caja padre 
+puede alinear sobre el principal sea eje X o el eje Y, segun el FLOW del padre
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;  space-evenly todas las orillas tienen un espacio proporcional al espacio interno
+  height: 30vh;
+}
+
+.item {
+  border: medium solid #999;
+  width: 20%;
+  height: 20%;
+  background-color: #666;
+}
+
+*/
+
+/*  //////////////////////////////////////////////////////////////////////////////////////////////// CHAPTER 5  ALIGN-ITEMS y ALIGN-CONTENT
+trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIGN sobre el EJE Y, para COLUMN trabajara sobre eje X
+ALIGN ITEMS:  ajusta items siempre que haya una sola linea. Se usa con NOWRAP
+ALIGN CONTENT: ajusta todos los items siempre y cuando los hijos sean mas de una sola linea. Trabaja en grupo. Se usa con WRAP y WRAP-REVERSE */
+
+/*
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;  valor por defecto 
+  align-items: baseline; /* stretch valor por defecto , los items se estiran para llenar el tamano del padre 
+  siempre y cuando los items no tengan definida una altura
+}
+
+.item {
+  border: 1px solid #999;
+  background-color: #666;
+  width: 20%;
+  height: 20%;
+}
+
+
+.item:nth-child(2) {
+  font-size: 250%;
+}*/
+
+/* ///////////////////////////////////////////////////////////////////////////////////     CHAPTER 6:  PROPIEDADES HIJOS
+factor de crecimiento del espacio sobrante  con FLEX-GROW: 0 , 1 , 2 , 3
+factor de encogimiento del espacio sobrante con FLEX-SHRINK: 0 , 1 , 2 , 3   A mas grande el factor mas habilidad p/ crecer o decrecer tiene
+cero (0) desactiva los factores, dps 1,2,3,4 reparte el espacio disponible entre los items
+
+Puedo definir rems (px) para los tamanos asi se distribuira de forma mas precisa el espacio entre c/ item
+*/
+
+/*
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #333;
+  height: 30vh;
+}
+.item {
+  border: 1px solid #999;
+  background-color: #666;
+  flex-grow: 1;  factor de crecimiento de los hijos, si la caja tiene espacio sobrante 
+
+}
+
+.item:nth-child(2) {
+  flex-grow: 2;  del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
+}
+*/
+
+/*
+.container2 {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #333;
+  height: 30vh;
+  width: 100%;
+}
+.item2 {
+  border: 1px solid #999;
+  background-color: #666;
+  flex-shrink: 0;  factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante 
+}
+
+.item2:nth-child(2) {
+  flex-shrink: 2; del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
+}
+
+*/
+/*
+.container3 {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #333;
+  height: 30vh;
+  width: 100%;
+}
+.item3 {
+  border: 1px solid #999;
+  background-color: #666;
+  flex-basis: 10rem;  tamano del elem hijo dentro de la caja flexbox
+  si la caja tiene flexbox: row, lo que flex-basis representa es el WIDTH
+  si la caja tiene flexbox: column, lo que flex-basis representa es el HEIGHT.  Es mas fuerte en ordenes de instruccion
+}
+
+.item3:nth-child(2) {
+  flex-basis: 20rem;
+}
+*/
+/* SHORTCUT P/ LOS ELEM. HIJO EN ESTE ORDEN :  FLEX
+grow, shrink, basis 
+
+ejemplo:  
+flex: 0 1 auto;
+*/
+
+/* OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
+
+order: 0; ...representa el orden que tendran los elem en la caja flexbox acepta valores positivos y negativos
+
+align-self: stretch; ...esta prop. es para los hijos y sobreescribe el valor de la prop. align-items solo p/ el elem. hijo especificado
+
+
+*/
+
+/*
+Apartir del capitulo 7, cada html contendra su propio <style> con la teoria incluida, por practicidad!
+*/

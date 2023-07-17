@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        box-sizing: border-box;
+        font-size: 16px;
+        font-family: sans-serif;
+        /* scroll-behavior: smooth;  se usa cuando tenemos enlaces <a> que apuntan a algun elem de nuestra pagina */
+      }
+
+      *,
+      *::after,
+      *::before {
+        box-sizing: inherit;
+      }
+
+      /* debemos definir cuantas filas y cuantas columnas necesitamos para nuestro ejercicio
+      para la version mobile first y p/ resoluciones mayores */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        grid-template: repeat(5, auto) / repeat(6, 1fr);
+        grid-template-areas:
+          "header header header header header header"
+          "nav nav nav nav nav nav"
+          "uc-l uc-l uc-c uc-c uc-r uc-r"
+          "mid mid mid low low low"
+          "foo foo foo foo foo foo";
+      }
+
+      body > * {
+        /* todos los hijos directos del body*/
+        background-color: lightblue;
+        border: 1px solid #222;
+        color: white;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .header {
+        background-color: lightpink;
+        grid-area: header;
+      }
+
+      .nav {
+        background-color: yellow;
+        grid-area: nav;
+      }
+
+      .uc-left {
+        background-color: lightgreen;
+        grid-area: uc-l;
+      }
+
+      .uc-center {
+        background-color: lightgreen;
+        grid-area: uc-c;
+      }
+
+      .uc-right {
+        background-color: lightgreen;
+        grid-area: uc-r;
+      }
+
+      .middle {
+        background-color: rgb(117, 7, 103);
+        grid-area: mid;
+      }
+
+      .lower {
+        background-color: rgb(117, 7, 103);
+        grid-area: low;
+      }
+
+      .footer {
+        background-color: black;
+        grid-area: foo;
+      }
+
+      /* media queries breakpoint, analizo cuantas columnas, filas voy a necesitar
+      Grid: 5cx5r*/
+
+      @media screen and (min-width: 1024px) {
+        body {
+          grid-template: repeat(5, auto) / repeat(5, 1fr);
+          grid-template-areas:
+            "header header header header header"
+            "nav uc-l uc-c uc-c uc-r"
+            "nav mid mid mid mid"
+            "nav low low low low"
+            "foo foo foo foo foo";
+        }
+      }
+    </style>
+
+    <title>Layout con Grid areas</title>
+  </head>
+  <body>
+    <header class="header">
+      <h2>Header</h2>
+    </header>
+    <nav class="nav">
+      <h2>Nav</h2>
+    </nav>
+
+    <article class="uc-left">
+      <h2>Upper Content left</h2>
+    </article>
+    <article class="uc-center">
+      <h2>Upper Content center</h2>
+    </article>
+    <article class="uc-right">
+      <h2>Upper Content right</h2>
+    </article>
+
+    <article class="middle">
+      <h2>Middle Content</h2>
+    </article>
+
+    <article class="lower">
+      <h2>Lower Content</h2>
+    </article>
+
+    <article class="footer">
+      <h2>Footer Content</h2>
+    </article>
+  </body>
+</html>

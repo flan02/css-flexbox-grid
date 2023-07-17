@@ -1,0 +1,12 @@
+www.jonmircha.com/grid
+
+www.learncssgrid.com
+
+
+TE VAS A CONVERTIR EN UNA NAVAJA SUIZA DE LA MAQUETACION WEB USANDO GRID Y FLEXBOX
+Para que sirve Grid y para que sirve Flexbox ?
+    Grid se penso p/ armar, disenar los espacios de maquetacion para hacerlos con Grid areas,
+    definimos asi las estructuras de la pagina web
+    Flexbox alineamos los elem ya internos de tus componentes, ventana modal, elementos de tarjeta,
+    elementos de un menu.
+Son complementarios entre los 2.

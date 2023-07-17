@@ -1,0 +1,10 @@
+@page {
+  size: A4;
+}
+
+body {
+  font-size: 12pt; /* trabajamos con PUNTOS, porq es el formato que lee WORD */
+  font-family: serif;
+  background-color: gray;
+  color: greenyellow;
+}

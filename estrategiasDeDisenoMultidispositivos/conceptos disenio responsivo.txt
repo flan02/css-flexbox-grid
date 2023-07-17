@@ -1,0 +1,92 @@
+1 - RESPONSIVE DESIGN BASICO 2010
+2 - ADAPTIVE DESIGN 2011 
+3 - RESPONSIVE + SERVER SIDE (RESS) 2011
+4 - RESPONSIBLE RESPONSIVE DESIGN (se suma javascript) 2014
+5 - FLUID DESIGN ( reducir las mediaqueries) 2022 ->
+
+las mediaqueries nos permiten trabajar con los operadores
+AND, OR, NOT
+
+Podemos ver las novedades del diseno responsivo p/ contenedores
+www.web.dev/new-responsive
+
+debemos diseniar sistemas, no solo paginas
+base + layout + module + state + theme
+
+
+Todos los contenedores deben ser flexibles, evitar usar unidades en .px
+
+1 pixel es 1/96 parte de una pulgada del mundo real.
+
+/* NO DEBEMOS MEZCLAR, MIN-WIDTH CON MAX-WIDTH */
+min-width = MOBILE FIRST,
+max-width = DESKTOP FIRST.
+                                        BREAKPOINTS
+ breakpoints mas utilizados :   320px, 400px, 600px, 768px, 1024px, 1200px, 1366px ( espacio p/ heroe-image) 
+los contenedores no llegan a 1920px, mueren de 1200px a 1500px 
+
+ LOS BREAKPOINTS deben ser convertidos de PIXELES a EMs (se adapta el elem al tamano de letra del contenedor padre) / REM se adapta al tamano fuente de <html>
+ya que asi dependera del tamano de la letra del dispositivo
+
+ conversion PX a EMs: 320px / 16px = 20em, 480px / 16px = 30em,  600px / 16px = 37.5 em, 768px / 16px = 48em, 1024px / 16px = 64em,
+ 1200px / 16px = 75em,  1366px / 16px = 85,4 em 
+
+ /////////////////////////////////////////////////////////////////////////
+                                            VIEWPORT
+minimum-scale: define la escala mínima a la que se podrá hacer zoom al contenido, por ejemplo si se configura .5 significa que se podrá hacer un zoom de hasta el 50%.
+maximum-scale: define la escala máxima a la que se podrá hacer zoom al contenido, por ejemplo si se configura 3 significa que se podrá hacer un zoom de hasta el 300%.
+user-scalable: define si el usuario puede escalar o no el contenido, sus valores son YES por defecto y NO p/ bloquear esta propiedad. 
+
+///////////////////////////////////////////////////////////////////////////
+                                            FEATURES QUERIES 
+consultas de las caracteristicas. CSS le pregunta al navegador si soporta ciertas caracteristicas
+(sirve p/ dar retrocompatibilidad) 
+
+////////////////////////////////////////////////////////////////////////////////////////
+                                        SEO ( SEARCH ENGINE OPTIMIZATION)
+Mobilegeddon (2015) detecta si el sitioweb esta optimizado p/ el diseno responsivo y mejora su posicion en los motores de busqueda
+PageSpeed Insights; es una herramienta de google q nos dice cuanto tardan en cargar los elementos de nuestra web a partir de los 70pts la calificacion es aceptable
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+DESKTOP FIRST : se conoce como la degradacion elegante, usamos la prop. MAX-WIDTH (es lo maximo de ahi para abajo) p/ definir las mediaqueries
+MOBILE FIRST: se conoce como el progressive enhancement, usamos la prop. MIN-WIDTH (es lo minimo de ahi para arriba) p/ definir las mediaqueries
+
+Es mas comodo ir agregando contenido con Mobile First, q ir sacandole elementos a la aplicacion Desktop First
+Se recomienda en 2022, empezar los proyectos con la tecnica Mobile First
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+ADAPTATIVE DESIGN:  nos podemos valer de la informacion q' nos devuelva el USER_AGENT p/ permitirle al usuario ver en pantalla determinado aspecto de nuestro sitioweb
+(lo hace facebook; ya q' no es igual en la computadora q' en el dispositivo movil
+www.facebook.com  vs  m.facebook.com )
+podemos redimensionar desde el frontend directamente
+Nos sirve p/ aplicaciones moviles interactivas p/ ofrecerle distintas versiones al usuario
+ver capitulo 92 del curso JAVASCRIPT de jon mircha
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+RESS (responsive design + server side components):  Pensada en el backend, donde un controlador evalua las condiciones del navegador y condicion del usuario
+y sirve una plantilla dinamica al frontend
+Detecta si el usuario quiere entrar desde el navegador y le lanza una plantilla distinta a si lo hace desde el movil.
+
+//////////////////////////////////////////////////////////////////////////////////////////
+2014
+RESPONSIBLE RESPONSIVE DESIGN: no es una buena practica de programacion utilizar, display: NONE
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+2020
+FLUID DESIGN: profesa tratar de optimizar el contenido p/ muchos dispositivos, tratando de disminuir el uso de mediaqueries
+usando el uso de funciones CSS-SASS como:
+. cal()
+. min(), max()
+. clamp( min val, ideal val, max val)
+y de unidades relativas como:
+. EMs   (basado en el ancho de la letra m, q' es la mas ancha)
+. REMs
+. EXs   (basada en la altura de la X de la fuente del elemento)
+. CHs   (basada en la anchura del "0" de la fuente del elemento)
+. %     al tamano del contenedor
+. vw, vh,      al tamano del viewport
+. vmin  (entre vw y vh toma el q' tenga menor valor)
+. vmax  (entre vw y vh toma el q' tenga mayor valor)
