@@ -56,11 +56,10 @@ column trabaja con align en eje x
 ?ejemplo:   flex: 0 1 auto;
 * flex-basis: 200px por ejemplo tiene propiedad mas fuerte que el width y el height si estamos trabajamos en una linea con flex
 
- OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
+ !OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
 
-order: 0; ...representa el orden que tendran los elem en la caja flexbox acepta valores positivos y negativos
-
-align-self: stretch; ...esta prop. es para los hijos y sobreescribe el valor de la prop. align-items solo p/ el elem. hijo especificado
+* order: 0; ...representa el orden que tendran los elem en la caja flexbox acepta valores positivos y negativos
+* align-self: stretch; ...esta prop. es para los hijos y sobreescribe el valor de la prop. align-items solo p/ el elem. hijo especificado
 
 
 Apartir del capitulo 7, cada html contendra su propio <style> con la teoria incluida, por practicidad!
