@@ -15,43 +15,18 @@ column trabaja con align en eje x
 
 
 
-/*  //////////////////////////////////////////////////////////////////////////////////////////////// CHAPTER 5  ALIGN-ITEMS y ALIGN-CONTENT */
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////     CHAPTER 6:  PROPIEDADES HIJOS */
 /*
-trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIGN sobre el EJE Y, para COLUMN trabajara sobre eje X
-? ALIGN ITEMS:  ajusta items siempre que haya una sola linea. Se usa con NOWRAP. Valor por defecto STRETCH (estira los items para llenar el tamano del padre)
-? ALIGN CONTENT: ajusta todos los items siempre y cuando los hijos formen mas de una sola linea. Trabaja en grupo de cajas. Se hay qe habilitar WRAP y WRAP-REVERSE si o si. 
+? factor de crecimiento del espacio sobrante  con FLEX-GROW: 0 (por defecto) No acepta nro negativo
+? factor de encogimiento cuando NO haya espacio sobrance con FLEX-SHRINK: 1 (por defecto)   A mas grande el factor mas habilidad p/ crecer o decrecer tiene
+? tamano del elem. hijo dentro de la caja flexbox con FLEX-BASIS: auto (por defecto)  Acepta nro negativo
+
+? Puedo definir rems (px) para los tamanos asi se distribuira de forma mas precisa el espacio entre c/ item
 */
 
 
-.container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;  /*valor por defecto */
-  align-items: baseline; /* stretch valor por defecto , los items se estiran para llenar el tamano del padre 
-  siempre y cuando los items no tengan definida una altura*/
-}
-
-.item {
-  border: 1px solid #999;
-  background-color: #666;
-  width: 20%;
-  height: 20%;
-}
-
-
-.item:nth-child(2) {
-  font-size: 250%;
-}
-
-/* ///////////////////////////////////////////////////////////////////////////////////     CHAPTER 6:  PROPIEDADES HIJOS
-factor de crecimiento del espacio sobrante  con FLEX-GROW: 0 , 1 , 2 , 3
-factor de encogimiento del espacio sobrante con FLEX-SHRINK: 0 , 1 , 2 , 3   A mas grande el factor mas habilidad p/ crecer o decrecer tiene
-cero (0) desactiva los factores, dps 1,2,3,4 reparte el espacio disponible entre los items
-
-Puedo definir rems (px) para los tamanos asi se distribuira de forma mas precisa el espacio entre c/ item
-*/
-
-/*
 .container {
   display: flex;
   flex-flow: row nowrap;
@@ -61,14 +36,14 @@ Puedo definir rems (px) para los tamanos asi se distribuira de forma mas precisa
 .item {
   border: 1px solid #999;
   background-color: #666;
-  flex-grow: 1;  factor de crecimiento de los hijos, si la caja tiene espacio sobrante 
+  flex-grow: 1; /* factor de crecimiento de los hijos, si la caja tiene espacio sobrante */
 
 }
 
 .item:nth-child(2) {
-  flex-grow: 2;  del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
+  flex-grow: 2; /* del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 */
 }
-*/
+
 
 /*
 .container2 {

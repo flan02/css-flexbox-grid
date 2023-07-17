@@ -75,3 +75,31 @@
   }
   
   
+
+  /*  //////////////////////////////////////////////////////////////////////////////////////////////// CHAPTER 5  ALIGN-ITEMS y ALIGN-CONTENT */
+/*
+trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIGN sobre el EJE Y, para COLUMN trabajara sobre eje X
+? ALIGN ITEMS:  ajusta items siempre que haya una sola linea. Se usa con NOWRAP. Valor por defecto STRETCH (estira los items para llenar el tamano del padre)
+? ALIGN CONTENT: ajusta todos los items siempre y cuando los hijos formen mas de una sola linea. Trabaja en grupo de cajas. Se hay qe habilitar WRAP y WRAP-REVERSE si o si. 
+*/
+
+
+.container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;  /*valor por defecto */
+  align-items: baseline; /* stretch valor por defecto , los items se estiran para llenar el tamano del padre 
+  siempre y cuando los items no tengan definida una altura*/
+}
+
+.item {
+  border: 1px solid #999;
+  background-color: #666;
+  width: 20%;
+  height: 20%;
+}
+
+
+.item:nth-child(2) {
+  font-size: 250%;
+}
