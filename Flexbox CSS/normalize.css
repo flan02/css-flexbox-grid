@@ -11,7 +11,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box; /* considera los bordes para contar el tamano de los items */
+  box-sizing: border-box; 
+  /* considera los bordes para contar el tamano de los items: Si el total es 20% seria 18% el items + 2% entre borde izq y der. */
 }
 
 html {

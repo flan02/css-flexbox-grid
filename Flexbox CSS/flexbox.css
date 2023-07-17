@@ -12,30 +12,24 @@ row trabaja con align en eje y
 column trabaja con align en eje x
  */
 
- 
-/*////////////////////////////////////////////////////////////////////////////////////// CHAPTER 2 CONCEPTOS */
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////// CHAPTER 3 FLUJO DE FLEXBOX   */
+
+/*ordena en row o column y sus reversos para invertir los ordenes*/
+/* 
+! Si uso row-reverse || column-reverse, el orden y la ubicacion de los items se invierte. De izq a derecha pasa a ser de derecha a izq y del primer item al ultimo pasa a ser del ultimo al primero
+? NO-WRAP (1 sola linea) es el comportamiento por defecto, si no se define nada, los items se acomodan en una sola fila, si no hay espacio suficiente se enciman y se genera un scroll horizontal
+*/
 
 .container {
+  display: flex;
+  flex-direction: column; /* column sobre eje y */
+  flex-wrap: wrap; /* envoltura del padre, como se alinean los hijos genera un scroll horizontal, mantiene todos los hijos en una sola fila horizontal // WRAP respeta el % de los hijos y crea columnas con los items dentro de la misma fila */
+  flex-flow: column nowrap; /* atajo (shortcut) flex-direction y flex-wrap */
+  height: 30vh;
   background-color: #333;
-  /*padding: 1rem;*/
-  display: flex;  /*como BLOCK (cajas envidiosas) ocupa todo el ancho aunque los items que contiene no abarquen todo el width de la pantalla */
-  /*display: inline-flex;*/ 
 }
-
-.item {
-  background-color: lightseagreen;
-}
-
-.container-2 {
-  background-color: #333;
-  /* Con inline-flex podemos alinear varias cajas como si estuvieran en linea */
-  display: inline-flex;  /* (como las etiquetas en linea) ocupa solo el ancho que necesita para abarcar los items que contenga */
-}
-
-
-
-/* ///////////////////////////////////////////////////////////////////////////////////// CHAPTER 3 FLUJO DE FLEXBOX  
-ordena en row o column y sus reversos para invertir los ordenes
 
 .item {
   background-color: #666;
@@ -44,20 +38,8 @@ ordena en row o column y sus reversos para invertir los ordenes
   height: 20%;
 }
 
-.container {
-  background-color: #333;
-  display: flex;
-  flex-direction: column;  column sobre eje y 
-  flex-wrap: wrap;  envoltura del padre, como se alinean los hijos 
-  genera un scroll horizontal, mantiene todos los
-  hijos en una sola fila horizontal // WRAP respeta el % de los hijos y
-  crea columnas con los items dentro de la misma fila
-  height: 30vh;
 
-  flex-flow: column nowrap;  atajo (shortcut) flex-direction y flex-wrap 
-}
 
-*/
 
 /*  ///////////////////////////////////////////////////////////////////////////////// CHAPTER 4  JUSTIFY-CONTENT
 justify content define la alineacion aplica respecto al espacio sobrante que quede en la caja padre 

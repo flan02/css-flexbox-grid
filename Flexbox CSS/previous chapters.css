@@ -1,0 +1,27 @@
+/*
+? Flexbox CSS
+? aqui vamos a escribir el codigo del archivo flexbox.css de los capitulo anteriores para que no molesten si las clases se repiten en capitulos siguientes.
+*/
+
+
+ 
+/*////////////////////////////////////////////////////////////////////////////////////// CHAPTER 2 CONCEPTOS */
+
+
+.container {
+    background-color: #333;
+    /*padding: 1rem;*/
+    display: flex;  /*como BLOCK (cajas envidiosas) ocupa todo el ancho aunque los items que contiene no abarquen todo el width de la pantalla */
+    /*display: inline-flex;*/ 
+  }
+  
+  .item {
+    background-color: lightseagreen;
+  }
+  
+  .container-2 {
+    background-color: #333;
+    /* Con inline-flex podemos alinear varias cajas como si estuvieran en linea */
+    display: inline-flex;  /* (como las etiquetas en linea) ocupa solo el ancho que necesita para abarcar los items que contenga */
+  }
+  
