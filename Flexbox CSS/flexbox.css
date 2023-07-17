@@ -17,7 +17,7 @@ column trabaja con align en eje x
 
 
 
-/* ///////////////////////////////////////////////////////////////////////////////////     CHAPTER 6:  PROPIEDADES HIJOS */
+
 /*
 ? factor de crecimiento del espacio sobrante  con FLEX-GROW: 0 (por defecto) No acepta nro negativo
 ? factor de encogimiento cuando NO haya espacio sobrance con FLEX-SHRINK: 1 (por defecto)   A mas grande el factor mas habilidad p/ crecer o decrecer tiene
@@ -27,25 +27,14 @@ column trabaja con align en eje x
 */
 
 
-.container {
-  display: flex;
-  flex-flow: row nowrap;
-  background-color: #333;
-  height: 30vh;
-}
-.item {
-  border: 1px solid #999;
-  background-color: #666;
-  flex-grow: 1; /* factor de crecimiento de los hijos, si la caja tiene espacio sobrante */
-
-}
-
-.item:nth-child(2) {
-  flex-grow: 2; /* del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 */
-}
+/* 
+El total del ancho es 239 y se reduce hace 225 aprox.  239 - 14 = 225, Esos 14 de decrecimiento son los que se dividen
+* item 1. 79.77 - 3.57 = 76.2
+* item 2. 79.77 - 3.57 = 76.2
+* item 3. 79.77 - 3.57 = 76.2
+*/
 
 
-/*
 .container2 {
   display: flex;
   flex-flow: row nowrap;
@@ -56,14 +45,14 @@ column trabaja con align en eje x
 .item2 {
   border: 1px solid #999;
   background-color: #666;
-  flex-shrink: 0;  factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante 
+  flex-shrink: 1; /* factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante */
 }
 
 .item2:nth-child(2) {
-  flex-shrink: 2; del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
+  flex-shrink: 2; /*del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 */
 }
 
-*/
+
 /*
 .container3 {
   display: flex;

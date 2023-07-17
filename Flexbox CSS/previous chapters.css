@@ -103,3 +103,23 @@ trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIG
 .item:nth-child(2) {
   font-size: 250%;
 }
+
+/* ///////////////////////////////////////////////////////////////////////////////////     CHAPTER 6:  PROPIEDADES HIJOS */
+/*
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #333;
+  height: 30vh;
+}
+.item {
+  border: 1px solid #999;
+  background-color: #666;
+  flex-grow: 1; factor de crecimiento de los hijos, si la caja tiene espacio sobrante 
+
+}
+
+.item:nth-child(2) {
+  flex-grow: 2;  del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
+}
+*/
