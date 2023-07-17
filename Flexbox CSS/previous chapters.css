@@ -50,3 +50,28 @@
     height: 20%;
   }
   
+
+/*  ///////////////////////////////////////////////////////////////////////////////// CHAPTER 4  JUSTIFY-CONTENT */
+/*
+? justify content define la alineacion aplica respecto al espacio sobrante que quede en la caja padre 
+? puede alinear sobre el principal sea eje X o el eje Y, segun el FLOW del padre
+
+*/
+
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly; /* space-evenly todas las orillas tienen un espacio proporcional al espacio interno*/
+    height: 30vh;
+    background-color: #666;
+  }
+  
+  .item {
+    border: medium solid #999;
+    width: 20%;
+    height: 20%;
+    background-color: burlywood;
+  }
+  
+  
