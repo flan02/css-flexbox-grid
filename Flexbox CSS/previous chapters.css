@@ -25,3 +25,28 @@
     display: inline-flex;  /* (como las etiquetas en linea) ocupa solo el ancho que necesita para abarcar los items que contenga */
   }
   
+
+/* ///////////////////////////////////////////////////////////////////////////////////// CHAPTER 3 FLUJO DE FLEXBOX   */
+
+  /*ordena en row o column y sus reversos para invertir los ordenes*/
+/* 
+! Si uso row-reverse || column-reverse, el orden y la ubicacion de los items se invierte. De izq a derecha pasa a ser de derecha a izq y del primer item al ultimo pasa a ser del ultimo al primero
+? NO-WRAP (1 sola linea) es el comportamiento por defecto, si no se define nada, los items se acomodan en una sola fila, si no hay espacio suficiente se enciman y se genera un scroll horizontal
+*/
+
+.container {
+    display: flex;
+    flex-direction: column; /* column sobre eje y */
+    flex-wrap: wrap; /* envoltura del padre, como se alinean los hijos genera un scroll horizontal, mantiene todos los hijos en una sola fila horizontal // WRAP respeta el % de los hijos y crea columnas con los items dentro de la misma fila */
+    flex-flow: column nowrap; /* atajo (shortcut) flex-direction y flex-wrap */
+    height: 30vh;
+    background-color: #333;
+  }
+  
+  .item {
+    background-color: #666;
+    border: thin solid pink;
+    width: 20%;
+    height: 20%;
+  }
+  
