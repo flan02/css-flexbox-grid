@@ -84,6 +84,7 @@ trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIG
 */
 
 
+
 .container {
   display: flex;
   flex-flow: row wrap;
@@ -123,3 +124,29 @@ trabajan sobre los ejes transversales,  si estamos en ROW : EJE X trabajara ALIG
   flex-grow: 2;  del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 
 }
 */
+
+
+/* 
+El total del ancho es 239 y se reduce hace 225 aprox.  239 - 14 = 225, Esos 14 de decrecimiento son los que se dividen
+* item 1. 79.77 - 3.57 = 76.2
+* item 2. 79.77 - 3.57 = 76.2
+* item 3. 79.77 - 3.57 = 76.2
+*/
+
+
+.container2 {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #333;
+  height: 30vh;
+  width: 100%;
+}
+.item2 {
+  border: 1px solid #999;
+  background-color: #666;
+  flex-shrink: 1; /* factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante */
+}
+
+.item2:nth-child(2) {
+  flex-shrink: 2; /*del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 */
+}

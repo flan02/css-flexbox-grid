@@ -27,33 +27,6 @@ column trabaja con align en eje x
 */
 
 
-/* 
-El total del ancho es 239 y se reduce hace 225 aprox.  239 - 14 = 225, Esos 14 de decrecimiento son los que se dividen
-* item 1. 79.77 - 3.57 = 76.2
-* item 2. 79.77 - 3.57 = 76.2
-* item 3. 79.77 - 3.57 = 76.2
-*/
-
-
-.container2 {
-  display: flex;
-  flex-flow: row nowrap;
-  background-color: #333;
-  height: 30vh;
-  width: 100%;
-}
-.item2 {
-  border: 1px solid #999;
-  background-color: #666;
-  flex-shrink: 1; /* factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante */
-}
-
-.item2:nth-child(2) {
-  flex-shrink: 2; /*del espacio sobrante toma proporcionalmente el doble que los otros elementos, si c/item toma 100 este tomara 200 */
-}
-
-
-/*
 .container3 {
   display: flex;
   flex-flow: row nowrap;
@@ -64,31 +37,31 @@ El total del ancho es 239 y se reduce hace 225 aprox.  239 - 14 = 225, Esos 14 d
 .item3 {
   border: 1px solid #999;
   background-color: #666;
-  flex-basis: 10rem;  tamano del elem hijo dentro de la caja flexbox
+  flex-basis: 10rem; /* tamano del elem hijo dentro de la caja flexbox
   si la caja tiene flexbox: row, lo que flex-basis representa es el WIDTH
-  si la caja tiene flexbox: column, lo que flex-basis representa es el HEIGHT.  Es mas fuerte en ordenes de instruccion
+  si la caja tiene flexbox: column, lo que flex-basis representa es el HEIGHT.  Es mas fuerte en ordenes de instruccion */
 }
 
 .item3:nth-child(2) {
   flex-basis: 20rem;
 }
-*/
-/* SHORTCUT P/ LOS ELEM. HIJO EN ESTE ORDEN :  FLEX
-grow, shrink, basis 
 
-ejemplo:  
-flex: 0 1 auto;
-*/
+.item3 {
+  flex-shrink: 1; /* factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante. GENERA SCROLL HORIZONTAL*/
+}
 
-/* OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
+
+/* 
+! SHORTCUT P/ LOS ELEM. HIJO EN ESTE ORDEN ->  flex: grow, shrink, basis 
+?ejemplo:   flex: 0 1 auto;
+* flex-basis: 200px por ejemplo tiene propiedad mas fuerte que el width y el height si estamos trabajamos en una linea con flex
+
+ OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
 
 order: 0; ...representa el orden que tendran los elem en la caja flexbox acepta valores positivos y negativos
 
 align-self: stretch; ...esta prop. es para los hijos y sobreescribe el valor de la prop. align-items solo p/ el elem. hijo especificado
 
 
-*/
-
-/*
 Apartir del capitulo 7, cada html contendra su propio <style> con la teoria incluida, por practicidad!
 */
