@@ -12,12 +12,6 @@ row trabaja con align en eje y
 column trabaja con align en eje x
  */
 
-
-
-
-
-
-
 /*
 ? factor de crecimiento del espacio sobrante  con FLEX-GROW: 0 (por defecto) No acepta nro negativo
 ? factor de encogimiento cuando NO haya espacio sobrance con FLEX-SHRINK: 1 (por defecto)   A mas grande el factor mas habilidad p/ crecer o decrecer tiene
@@ -27,40 +21,3 @@ column trabaja con align en eje x
 */
 
 
-.container3 {
-  display: flex;
-  flex-flow: row nowrap;
-  background-color: #333;
-  height: 30vh;
-  width: 100%;
-}
-.item3 {
-  border: 1px solid #999;
-  background-color: #666;
-  flex-basis: 10rem; /* tamano del elem hijo dentro de la caja flexbox
-  si la caja tiene flexbox: row, lo que flex-basis representa es el WIDTH
-  si la caja tiene flexbox: column, lo que flex-basis representa es el HEIGHT.  Es mas fuerte en ordenes de instruccion */
-}
-
-.item3:nth-child(2) {
-  flex-basis: 20rem;
-}
-
-.item3 {
-  flex-shrink: 1; /* factor de encogimiento de los hijos, si la caja NO tiene espacio sobrante. GENERA SCROLL HORIZONTAL*/
-}
-
-
-/* 
-! SHORTCUT P/ LOS ELEM. HIJO EN ESTE ORDEN ->  flex: grow, shrink, basis 
-?ejemplo:   flex: 0 1 auto;
-* flex-basis: 200px por ejemplo tiene propiedad mas fuerte que el width y el height si estamos trabajamos en una linea con flex
-
- !OTRAS PROPIEDADES FLEXBOX PARA LOS HIJOS: 
-
-* order: 0; ...representa el orden que tendran los elem en la caja flexbox acepta valores positivos y negativos
-* align-self: stretch; ...esta prop. es para los hijos y sobreescribe el valor de la prop. align-items solo p/ el elem. hijo especificado
-
-
-Apartir del capitulo 7, cada html contendra su propio <style> con la teoria incluida, por practicidad!
-*/
