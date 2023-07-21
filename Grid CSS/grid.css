@@ -65,7 +65,9 @@ img {
   background-color: rosybrown;
 }
 
-/* ////////////////////////////////////////////  GRID EXPLICITA  /////////////////////////// */
+/*
+! ///////////////////////////////////  GRID EXPLICITA  /////////////////////////////// 
+*/
 .grid-explicit {
   display: grid;
 
@@ -126,7 +128,9 @@ img {
   background-color: orange;
   color: blue;
 }
-/* ////////////////////////////////////////////////// MAQUETACION (wire frames) con  GRID AREA /////////////////////////////// */
+/* 
+! ///////////////////////////////////////// MAQUETACION (wire frames) con  GRID AREA /////////////////////////////// 
+*/
 .grid-areas {
   /* podemos dejar espacio vacio p/ publicidad, etc */
   display: grid;
