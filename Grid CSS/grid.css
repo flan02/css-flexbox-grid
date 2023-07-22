@@ -68,6 +68,7 @@ img {
 /*
 ! ///////////////////////////////////  GRID EXPLICITA  /////////////////////////////// 
 */
+
 .grid-explicit {
   display: grid;
 
@@ -76,24 +77,28 @@ img {
   grid-template-rows: 2rem 20vh 30%;
 
   /* Grid 5cx4r */
-  grid-template-columns: repeat(5, 20%); /* 1fraccion = espacio sobrante */
-  grid-template-rows: repeat(
-    4,
-    auto
-  ); /* auto hace que el height de la fila se adapte a el predeterminado */
-
+  grid-template-columns: repeat(5, 20%); /* 5 columnas de 20% */
+  grid-template-rows: repeat(4, auto); /* auto hace que el height de la fila se adapte a el predeterminado */
+  /* Grid 4cx5r */
   grid-template-columns: 20% repeat(2, 30%) 20%;
   grid-template-rows: repeat(5, 1fr);
-  /* column-gap: 1rem;
-  row-gap: 1rem;
-  gap: row column;  shorthand   gap:0  es por defecto   */
+  /* 
+    row-gap: 1rem;  Separacion entre las filas 
+    column-gap: 1rem;  Separacion entre las columnas 
+    gap: row column; es un shorthand (gap: 0 0) x defecto 
+  */
 }
+
+/*
+! ////////////////////////// POSICIONAMIENTO CON GRID LINES //////////////////////////////// 
+*/
 
 .grid-explicit .item:nth-child(10) {
   background-color: red;
   color: white;
-  grid-row-start: 2; /* indicamos la posicion de la grilla donde se ubicara esta celda; */
-  grid-row-end: 3;
+  /* indicamos la posicion de la grilla donde se ubicara esta celda */
+  grid-row-start: 2; /* En que grid row line inicia */
+  grid-row-end: 3; /* En que grid row line termina */
   grid-column-start: 2;
   grid-column-end: 3;
   /* grid-row: start / end   ATAJO */
@@ -103,16 +108,19 @@ img {
 .grid-explicit .item:nth-child(13) {
   background-color: cyan;
   color: rebeccapurple;
+  /* Atajo para los grid lines */
   grid-row: 2 / 3;
   grid-column: 1 / 2; /* si la difererencia entre row o columns es + de 1 linea, entonces pasara a ocupar mas espacio */
   /* ATAJO TOTAL */
-  grid-area: 4/5/2/4; /* row start/row end/column start/column end  */
+  grid-area: 4/5/1/4;   /* row start/row end/column start/column end */  
 }
 
 .grid-explicit .item:nth-child(12) {
   background-color: lightcoral;
-  grid-column: 1 / span 2; /* forma de ocupar espacio para una celda dentro de la grilla */
+  /* forma de ocupar espacio para una celda dentro de la grilla */
+  grid-column: 1 / span 2; 
   grid-row: 4 / span 1;
+  /* no funciona el shorthand GRID-AREA */
 }
 
 /* NO RECOMENDADO POR TEXTOSO, ES INCOMODO DE LEER LOS NOMBRES PARA C/ CELDA...  */
@@ -120,7 +128,6 @@ img {
   display: grid;
   grid-template-columns: [c1] 1fr [c2] 1fr [c3] 1fr;
   grid-template-rows: [f1] 1fr [f2] 1fr [f3] 1fr;
-
   /* no funciona el shorthand GRID-AREA */
 }
 
@@ -128,15 +135,22 @@ img {
   background-color: orange;
   color: blue;
 }
+
 /* 
-! ///////////////////////////////////////// MAQUETACION (wire frames) con  GRID AREA /////////////////////////////// 
+! //////////////////////////// MAQUETACION (wire frames) con  GRID AREA /////////////////////////////// 
 */
+
 .grid-areas {
   /* podemos dejar espacio vacio p/ publicidad, etc */
   display: grid;
   /* grid 2cx3r */
+  
+  /* grid-template-columns: 1fr 200;
+  grid-template-rows: 100px 1fr 60px; */
   grid-template: 100px repeat(2, 1fr) 60px / 1fr 200px; /* shorthand */
-  grid-template-areas:   /* maquetamos los contenedores de la pagina web */
+  
+  /* maquetamos los contenedores de la pagina web */
+  grid-template-areas:   
     "header header"
     "content sidebar" /* repetimos el nombre indicando cuantas columnas de las ya definidas queremos ocupar */
     "content ." /* usamos el punto para dejar la celda vacia */
@@ -147,64 +161,84 @@ img {
   /* asignamos a c/ nombre de la maqueta a una clase */
   grid-area: header; /* sin comillas */
   background-color: hotpink;
+  text-align: center;
 }
 
 .content {
   grid-area: content;
   background-color: lawngreen;
+  text-align: center;
 }
 
 .sidebar {
   grid-area: sidebar;
   background-color: lightblue;
+  text-align: center;
 }
 
 .footer {
   grid-area: footer;
   background-color: lightseagreen;
+  text-align: center;
 }
 
-/* //////////////////////////////////////////////////  GRID IMPLICITA  //////////////////////////////// */
+/* 
+! //////////////////////////////////////  GRID IMPLICITA  ////////////////////////////////// 
+*/
 
 .grid-implicit {
-  /* es implicito ya que excedio el template q' defini, los acomoda por defecto el navegador*/
-
-  display: inline-grid; /* no ocupa todo el ancho la grid, permite que si hay otra abajo suba y se ponga al lado */
+  /* es implicito ya que (19items) excedio el template q' defini (3x4=12items), los acomoda por defecto el navegador*/
+  display: inline-grid; /* NO ocupa todo el ancho la grid, permite que si hay otra abajo suba y se ponga al lado. Display: inline (no acepta margenes) */
   width: 45%;
-  grid-template: repeat(3, 165px) / repeat(4, 1fr);
+  grid-template: repeat(3, 150px) / repeat(4, 1fr); /* 3x4 = 12items acomodados, los demas se acomodaran solos */
 }
 
-/* ///////////////////////////////////////////////////////////  FLUJO DE LA GRID /////////////////////  */
-/* tambien podemos invertir el orden del flujo de la maquetacion fila-columna y al reves*/
-/* si el flujo es row se generan filas implicitas y si es flow column se generan columnas*/
+/* 
+! ///////////////////////////////////  FLUJO DE LA GRID ////////////////////////////////////  
+ ? tambien podemos invertir el orden del flujo de la maquetacion fila-columna y al reves
+ ? si el flujo es row se generan filas implicitas y si es flow column se generan columnas
+*/
+
 .grid-flow {
-  display: grid;
+  display: grid; /* tiene el modelo de bloque */
+  /* 3cx5r */
   grid-template: repeat(3, 130px) / repeat(5, 1fr);
-  grid-auto-flow: column; /* elegimos como se acomodan los GRID si por filas o columnas */
-  grid-auto-columns: 100px; /* manejamos las celdas implicitas es TRANSVERSAL: manejamos el alto de las Celdas implicitas o si usamos columnas definimos el ancho de las columnas */
+  grid-auto-flow: column; /* elegimos como se acomodan los GRID si por filas o columnas (row por defecto) */
+  /* grid-auto-rows: auto; Valor por defecto */
+  grid-auto-columns: 100px; 
+  /* 
+  * manejar las celdas implicitas es TRANSVERSAL: Si el auto-flow: column manejo el ancho de las columnas implicitas, 
+  * si usamos auto-flow: row manejamos la altura de las filas implicitas */
 }
 
-/* /////////////////////////////////////////////////////////////////  APROVECHAMOS LOS ESPACIOS VACIOS  ///////////*/
-/* cuando sobran espacio dps de posicionar explicitamente los elementos, podamos aprovecharlos ubicando los grid items sobrantes */
+/* 
+! ///////////////////////////////////  APROVECHAMOS LOS ESPACIOS VACIOS  //////////////////
+? cuando sobran espacio dps de posicionar explicitamente los elementos, podamos aprovecharlos ubicando los grid items sobrantes 
+*/
 .grid-flow-dense {
-  display: grid;
-  /* grid 5cx4r */
-  grid-template: repeat(4, 120px) / repeat(5, 1fr);
-  grid-auto-flow: row dense; /* cambia el algoritmo y rellena los espacios vacios */
-  /* DENSE: llena espacios dinamico, seria como un float y acomoda el resto de los elem. a su lado */
-  /* funciona tanto como p/ el auto-flow en fila y en columna */
+  display: grid; 
+  /*grid 5cx4r */
+  grid-template: repeat(4, 120px) / repeat(5, 1fr); /* tendremos 20 celdas disponibles */
+  grid-auto-flow: row dense; /* cambia el algoritmo y rellena las celdas vacias */
+  /*grid-auto-flow: column dense; */
+  /* 
+  ? DENSE: llena espacios dinamico, seria como un float y acomoda el resto de los elem. a su lado
+  ? funciona tanto como p/ el auto-flow en fila y en columna
+  */
 }
 
 .grid-flow-dense .item:nth-child(9) {
   background-color: cyan;
-  color: lime;
+  color: purple;
   font-weight: 900;
-  grid-row: span 3;
+  grid-row: span 3; /* si rebasa la fila se corre hacia abajo */
   grid-column: span 3;
 }
 
-/*  ///////////////////////////////////////////////////////////////////   ACOMODO DE LAS CAPAS   /////////////////////// */
-/* FUNCIONA COMO SI FUERA UN Z-INDEX */
+/*
+! ///////////////////////////////////   ACOMODO DE LAS CAPAS   ///////////////////////////// 
+? FUNCIONA COMO SI FUERA UN Z-INDEX 
+*/
 
 .grid-layers {
   display: grid;

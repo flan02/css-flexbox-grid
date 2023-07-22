@@ -17,3 +17,10 @@ Diseñamos nuestras propias clases css para integrar en un proyecto sass
 
 # GRID C.I.L.T.A.C  [acronimo]
 
+### grid-template-areas:   
+    "header header"
+    "content sidebar"  
+    "content ." 
+    "footer footer";
+**Nos ayudara a escribir menos codigo en la responsibidad, ya que lo unico que tendremos
+que cambiar sera el diseño del grid template area **
