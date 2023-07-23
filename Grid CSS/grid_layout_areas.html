@@ -21,73 +21,118 @@
       /* debemos definir cuantas filas y cuantas columnas necesitamos para nuestro ejercicio
       para la version mobile first y p/ resoluciones mayores */
       body {
-        margin: 0;
-        min-height: 100vh;
         display: grid;
-        grid-template: repeat(5, auto) / repeat(6, 1fr);
+        min-height: 100vh;
+        margin: 0;
+        grid-template: repeat(8, auto) / repeat(6, 1fr);
         grid-template-areas:
           "header header header header header header"
-          "nav nav nav nav nav nav"
-          "uc-l uc-l uc-c uc-c uc-r uc-r"
-          "mid mid mid low low low"
+          "uc-c uc-c uc-c uc-c uc-c uc-c"
+          "uc-l uc-l uc-l uc-r uc-r uc-r"
+          "mid mid mid mid mid mid" 
+          "mid mid mid mid mid mid" 
+          "low low low low low low"
+          "low low low low low low"
           "foo foo foo foo foo foo";
       }
 
       body > * {
         /* todos los hijos directos del body*/
-        background-color: lightblue;
+      /*  display: flex;
+        justify-content: center;
+        align-items: center;*/
         border: 1px solid #222;
         color: white;
       }
 
       h2 {
         text-align: center;
+        
+      }
+      .header__texto::before {
+        content: "Beauty Header Mobile";
+        margin: auto auto;
+      }
+      .nav__texto::before {
+        content: "Beauty Nav Mobile ";
+        margin: auto auto;
+      }
+      .footer__texto::before {
+        content: "Beauty Footer Mobile ";
+        margin: auto auto;
       }
 
       .header {
-        background-color: lightpink;
+        background-color: cornflowerblue;
         grid-area: header;
       }
 
       .nav {
-        background-color: yellow;
+        display: none; /* Solo en mobile */
+        background-color: orangered;
         grid-area: nav;
       }
 
       .uc-left {
-        background-color: lightgreen;
+        background-color: rgb(26, 207, 26);
         grid-area: uc-l;
       }
 
       .uc-center {
-        background-color: lightgreen;
         grid-area: uc-c;
+        background-color: yellow;
+        color: #222;
       }
 
       .uc-right {
-        background-color: lightgreen;
+        background-color: rgb(56, 133, 56);
         grid-area: uc-r;
       }
 
       .middle {
-        background-color: rgb(117, 7, 103);
+        background-color: rgb(184, 15, 161);
         grid-area: mid;
       }
 
       .lower {
-        background-color: rgb(117, 7, 103);
+        background-color: rgb(95, 39, 88);
         grid-area: low;
       }
 
       .footer {
-        background-color: black;
+        background-color: #222;
         grid-area: foo;
       }
 
       /* media queries breakpoint, analizo cuantas columnas, filas voy a necesitar
       Grid: 5cx5r*/
 
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: 768px) {
+        body {
+          grid-template: repeat(6, auto) / repeat(5, 1fr);
+          grid-template-areas:
+            "header header header header header"
+            "nav nav nav nav nav"
+            "uc-c uc-c uc-c uc-c uc-c"
+            "uc-l mid mid mid uc-r"
+            "uc-l low low low uc-r"
+            "foo foo foo foo foo";
+        }
+        .nav {
+        display: block;
+      }
+        .header__texto::before {
+        content: "Awesome Header Tablet ";
+      }
+      .nav__texto::before {
+        content: "Awesome Nav Tablet ";
+      }
+      .footer__texto::before {
+        content: "Awesome Footer Tablet ";
+      }
+    }
+
+      @media screen and (min-width: 1200px) {
         body {
           grid-template: repeat(5, auto) / repeat(5, 1fr);
           grid-template-areas:
@@ -97,24 +142,38 @@
             "nav low low low low"
             "foo foo foo foo foo";
         }
+.nav {
+  display: block;
+}
+        .header__texto::before {
+        content: "Outstanding Header Desktop ";
       }
+      .nav__texto::before {
+        content: "Outstanding Nav Desktop ";
+      }
+      .footer__texto::before {
+        content: "Outstanding Footer Desktop ";
+      }
+    }
+
+
     </style>
 
     <title>Layout con Grid areas</title>
   </head>
   <body>
     <header class="header">
-      <h2>Header</h2>
+      <h2 class="header__texto"></h2>
     </header>
     <nav class="nav">
-      <h2>Nav</h2>
+      <h2 class="nav__texto"></h2>
     </nav>
 
     <article class="uc-left">
       <h2>Upper Content left</h2>
     </article>
     <article class="uc-center">
-      <h2>Upper Content center</h2>
+      <h2>por Dan Chanivet 😎</h2>
     </article>
     <article class="uc-right">
       <h2>Upper Content right</h2>
@@ -129,7 +188,7 @@
     </article>
 
     <article class="footer">
-      <h2>Footer Content</h2>
+      <h2 class="footer__texto"></h2>
     </article>
   </body>
 </html>

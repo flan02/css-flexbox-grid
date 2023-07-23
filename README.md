@@ -5,7 +5,7 @@ Diseñamos nuestras propias clases css para integrar en un proyecto sass
 *Se penso para el acomodo interno de los elementos, una card, ventana modal. Alieneamos los elem de un componente de la UI.* 
 
 # Grid
-*Nos permite crear reticulas de maquetacion extremadamente sencillo y rapido.*
+*Nos permite crear reticulas de maquetacion extremadamente sencillo y rapido. Definimos la UI general de maquetacion p/ diff dispositivos.*
 ### Grid Container (cont padre)
 ### Grid Items (elem childrens)
 ### Grid Lines (lineas de cuadriculas)
@@ -24,3 +24,19 @@ Diseñamos nuestras propias clases css para integrar en un proyecto sass
     "footer footer";
 **Nos ayudara a escribir menos codigo en la responsibidad, ya que lo unico que tendremos
 que cambiar sera el diseño del grid template area **
+
+# FLEXBOX + GRID = Navaja Suiza de la maquetacion web.
+
+## Tecnica de maquetacion
+**
+Para utilizar maquetar con grid primero tenemos q revisar o analizar cuantas columnas y filas
+necesitamos definir en nuestro sistema de maquetacion
+**
+
+###### Recursos
+https://css-tricks.com/
+https://learncssgrid.com/
+https://codepen.io/anthonydugois/pen/RpYBmy (grilla construida con react)
+https://codepen.io/your-work/
+https://griddy.io (genera cuadriculas)
+https://cssgridgarden.com/ (juego para aprender css)
