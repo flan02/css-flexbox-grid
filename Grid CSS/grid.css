@@ -277,15 +277,17 @@ img {
   opacity: 0.75;
 }
 
-/* ///////////////////////////////////////////////  ORDEN elementos GRID HIJOS  //////////////// */
-/* muy similar a flexbox SE APLICA A LOS ELEMENTOS HIJOS
-default = 0 , acepta numeros positivos y negativos 
-aplica solo cuando trabajamos sin dar una posicion de linea puntual a los hijos*/
+/*
+! /////////////////////////////////////  ORDEN elementos GRID HIJOS  ///////////////////// 
+? muy similar a flexbox SE APLICA A LOS ELEMENTOS HIJOS default ORDER = 0 , acepta numeros positivos y negativos 
+? aplica solo cuando trabajamos sin dar una posicion de linea puntual a los hijos (acomodamiento IMPLICITO)
+*/
 
 .grid-order {
   display: grid;
-  /* grid 3cx2r */
-  grid-template: repeat(2, 1fr) / repeat(3, 1fr);
+  /* grid 3cx2r = 6 celdas */
+  grid-template: repeat(2, 1fr) / repeat(3, 1fr); /* row / columns */
+  /* grid-auto-flow: column;  por defecto es row */
 }
 
 .grid-order .item:nth-child(1) {
@@ -300,11 +302,13 @@ aplica solo cuando trabajamos sin dar una posicion de linea puntual a los hijos*
   order: -1;
 }
 
-/* podemos alinear los grid hijos que pertenecen a un grid padre/
-/* necesitamos que la grid no ocupe todo el espacio del contenedor padre
-p/q tenga por donde moverse */
-/* podemos mover independientes Las celdas, no deben ocupar todo el espacio sino que van a ocupar su tamano dado
-en este caso le dimos 200px a rows y 200px a column*/
+/* 
+* podemos alinear los grid hijos que pertenecen a un grid padre
+* necesitamos que la grid no ocupe todo el espacio del contenedor padre p/q tenga por donde moverse 
+* podemos mover independientes Las celdas, no deben ocupar todo el espacio sino que van a ocupar su tamano dado
+* en este caso le dimos 200px a rows y 200px a column
+*/
+
 .grid-align {
   display: grid;
   /* grid 3cx2r */
@@ -317,17 +321,21 @@ en este caso le dimos 200px a rows y 200px a column*/
 .grid-align .item:nth-child(4) {
   background-color: #dbea33;
   justify-self: start;
-  align-self: start;
+  align-self: end;
   /*  margin-left: -1rem; */
 }
+
+/*
+! ////////////////////////////// Alineamientos de GRID TRACKS /////////////////////////////// 
+*/
+
 
 /* grid tracks movemos todas las celdas en conjunto sobre eje X o eje Y */
 .grid-align-tracks {
   display: grid;
-  /* grid 3cx2r */
+  /* grid 3cx2r = 6 celdas */
   grid-template: repeat(2, 200px) / repeat(3, 200px);
-  justify-content: end; /* por defecto es START */
-  /* space-evenly: mismo tamano entre espacio de las orillas y los espacios internos */
+  justify-content: end; /* por defecto es START. Alineamos las filas o las columnas por completo */
   align-content: space-evenly;
 }
 
@@ -336,18 +344,20 @@ en este caso le dimos 200px a rows y 200px a column*/
   border: 1px solid purple;
 }
 
-/* ////////////////////////////////////////////  MAX y MIN tamanos para las GRID /////////////// */
-/* es dinamico e implicito depende la cant de contenido que le agregue 
-funcion MINMAX( tam min, tam max) podemos usar cualquier unidad de medida */
+/*
+! ////////////////////////  MAX y MIN tamaños para los grid-items /////////////////////////// 
+? es dinamico e implicito depende la cant de contenido que le agregue 
+? funcion MINMAX( tam min, tam max) podemos usar cualquier unidad de medida 
+*/
 
 .grid-min-max {
+  /* 
+  * min-max content afectaran en este caso a toda la columna, y todas las filas que se creen en esa columna
+  * grid 4cx?r definimos las columnas, pero las filas seran creadas en base al contenido, desbordado de las columnas a medida que achiquemos la pantalla
+  */
   display: grid;
-  /* min-max content afectaran en este caso a toda la columna, y todas las filas que se creen en esa columna*/
-  /* grid 4c x ?r   definimos las columnas, pero las filas seran creadas en base al contenido, desbordado de las columnas a medida que achiquemos la pantalla*/
-  grid-template-columns: repeat(
-    4,
-    minmax(min-content, 200px) /* valor constante q' llega con CSS */
-  ); /*min-content hace q' se achiquen las celdas al tamano del contenido q' tengan dentro*/
+  grid-template-columns: repeat(4, minmax(min-content, 200px)); /* valor constante q' llega con CSS */
+   /* min-content hace q' se achiquen las celdas al tamano del contenido q' tengan dentro*/
 
   grid-template-columns: repeat(
     4,
@@ -357,7 +367,7 @@ funcion MINMAX( tam min, tam max) podemos usar cualquier unidad de medida */
   grid-template-columns: repeat(
     4,
     minmax(100px, max-content)
-  ); /* la celda crece hasta el tam del contenido maximo */
+  ); /* la celda y sus columnas que estan abajo de ella crecen hasta el tam del contenido maximo */
 
   grid-template-columns: repeat(
     4,
@@ -372,64 +382,63 @@ funcion MINMAX( tam min, tam max) podemos usar cualquier unidad de medida */
   si le pongo el lorem ipsum, se adaptara la columna a ese tam */
 }
 
-/*  ////////////////////////////////////////////////////////////////////   GRID CON REPETICION ////////////////  */
+/*
+! //////////////////////////////////   GRID CON REPETICION ////////////////////////////////  
+*/
 
 .grid-repeat {
-  display: grid; /* 4c x 4r */
-  /*  grid-template-columns: repeat(
-    1,
-    10% 20% 30% 40%
-  ); QUE REPITA UNA VEZ ESTE PATRON SOBRE TODOS LOS ELEMENTOS */
+  display: grid; /* 4c x 4r = 16celdas */
+  
   /*  grid-auto-columns: 100px;  le damos un valor a los elem creados IMPLICITAMENTE */
   /* tambien se puede aplicar sobre ROWS y repetira sobre el EJE Y el patron de repeticion */
-  grid-template-columns: repeat(1, 10% 20% 30% 40%);
+  grid-template-columns: repeat(1, 10% 20% 30% 40%); /*  grid-template-columns: repeat(1, 10% 20% 30% 40%); QUE REPITA UNA VEZ ESTE PATRON SOBRE TODOS LOS ELEMENTOS */
   grid-template-rows: repeat(2, 100px 200px);
   grid-auto-rows: 80px; /* define el tam p/ todas las filas creadas IMPLICITAMENTE */
-
-  /* la funcion repeat solo se puede usar en GRID TEMPLATE COLUMNS
-  y en GRID TEMPLATE ROWS */
+  /* la funcion repeat solo se puede usar en GRID TEMPLATE COLUMNS y en GRID TEMPLATE ROWS */
+  grid-auto-rows: repeat(2, 100px 200px); /* repite 2 veces el patron de 80px */
 }
 
-/* ////////////////////////////////////////////////////////////////////   GRID DINAMICAS /////////////////////////// */
-
-/* auto-fill rellena la grid con tracks generados dinamicamente */
-
-/* sirve p/ aplicacionnes q rellenen dinamicamente con contenido segun el usuario y sus datos
-ej: la cuadricula de instagram que va mostrando las imagenes de los usuarios*/
-
-/* auto-fit ajusta la grid con los tracks existentes (seria como flex-grow)
-aprovecha el espacio sobrante y lo aplica sobre los elem restantes*/
+/*
+! //////////////////////////////////// GRID DINAMICAS ///////////////////////////////////// 
+? auto-fill rellena la grid con tracks generados dinamicamente 
+? sirve p/ aplicacionnes q rellenen dinamicamente con contenido segun el usuario y sus datos
+? ej: la cuadricula de instagram que va mostrando las imagenes de los usuarios
+? auto-fit ajusta la grid con los tracks existentes (seria como flex-grow)
+? aprovecha el espacio sobrante y lo aplica sobre los elem restantes
+*/
 .grid-dynamics {
   display: grid;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-columns: repeat(
-    auto-fill,
-    100px
-  ); /* autofill p/ generar automaticamente filas o columnas */
+  grid-template-columns: repeat(4, 100px); /* 4 columnas de 100px */
+  grid-template-columns: repeat(auto-fill,100px); /* autofill para rellenar toda la grid con tracks (cols o rows) generados dinamicamente. Divide la grilla con esas dimensiones. */
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-
-  /* c/ 100px en el tamano minimo, una columna al no poder achicarse mas se colocara abajo de todo */
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  /* cada 100px en el tamano minimo, una columna al no poder achicarse mas se colocara abajo de todo */
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* ajusta la grid con los tracks existentes */
 }
 
-/* //////////////////////////////////////////////////  GRID RESPONSIVE SIN MEDIA QUERIES   ////////////////////////// */
-/* entre 320px son las resoluciones eje X minimas de los moviles mas baratos, considero 280px por posibles margenes*/
+/*
+! /////////////////////////////  GRID RESPONSIVE SIN MEDIA QUERIES  //////////////////////// 
+? entre 320px son las resoluciones eje X minimas de los moviles mas baratos, considero 280px por posibles margenes
+*/
 .grid-responsive {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1vh;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Repetimos el patron a los elem. que tengo disponibles, la cuadricula se formara dependiendo de la cant de items que yo tenga*/
+  /* gap: 1vw;  1% del ancho del contenedor */
 }
 
-/* //////////////////////////////////////////////////  GRID ANIDADOS  /////////////////////////// */
-/* sirve para que un grid-hijo, sea padre grid de otros hijos se utiliza igual que flexbox */
-/* las grid por herencia son independientes, no tiene efecto en cadena */
+/* 
+! ///////////////////////////////  GRID ANIDADOS  ///////////////////////////////////////// 
+? sirve para que un grid-hijo, sea padre grid de otros hijos se utiliza igual que flexbox 
+? las grid por herencia son independientes, no tiene efecto en cadena 
+*/
 
 .grid-nested {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-/* /////////////////////////////////////////  SUBGRID  (solo soportado x mozilla) ///////////////////////////// */
+/*
+! /////////////////////////  SUBGRID  (solo soportado x mozilla) ////////////////////////// 
+*/
 
 .grid {
   display: grid;
